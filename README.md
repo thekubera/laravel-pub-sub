@@ -16,9 +16,9 @@ This repository demonstrates a Producer-Consumer setup using Apache Kafka. The a
 
 1. **Clone the Repository:**
 
-```bash
-git clone <repository-url>
-```
+   ```bash
+   git clone https://github.com/thekubera/laravel-pub-sub
+   ```
 
 2. **Start Services:**
 
@@ -28,9 +28,27 @@ git clone <repository-url>
    docker compose up
    ```
 
-3. **Generate Laravel Application Keys:**
+3. **Copy and Adjust Environment Files:**
 
-   Once the build and startup are successful, generate application keys for both the producer and consumer Laravel applications:
+   Once the build and startup are successful, copy the `.env.example` file to `.env` for both the producer and consumer Laravel applications, and make any necessary adjustments:
+
+   **For Producer:**
+
+   ```bash
+   docker exec <producer-container-name> cp .env.example .env
+   ```
+
+   **For Consumer:**
+
+   ```bash
+   docker exec <consumer-container-name> cp .env.example .env
+   ```
+
+   **Note:** Replace `<producer-container-name>` and `<consumer-container-name>` with the actual container names obtained from `docker-compose ps`.
+
+4. **Generate Laravel Application Keys:**
+
+   Generate application keys for both the producer and consumer Laravel applications:
 
    **For Producer:**
 
@@ -44,13 +62,11 @@ git clone <repository-url>
    docker exec <consumer-container-name> php artisan key:generate
    ```
 
-   **Note:** Replace `<producer-container-name>` and `<consumer-container-name>` with the actual container names obtained from `docker-compose ps`.
-
-4. **Access Producer Interface:**
+5. **Access Producer Interface:**
 
    Open your web browser and navigate to `http://localhost:8000/producer/` to interact with the message producer.
 
-5. **Consume Messages:**
+6. **Consume Messages:**
 
    To consume messages from the Kafka topic, run the following command in a separate terminal window:
 
@@ -60,7 +76,7 @@ git clone <repository-url>
 
 ### Code Exploration
 
-For understanding of the producer and consumer logic, explore the following files:
+For understanding the producer and consumer logic, explore the following files:
 
 - `ProducerController.php` (Producer application)
 - `KafkaConsumerCommand.php` (Consumer application)
