@@ -28,8 +28,8 @@ services:
     build:
       context: ./producer
       dockerfile: Dockerfile
-    volumes:
-      - ./producer:/var/www/producer
+    # volumes:
+    #   - ./producer:/var/www/producer
     depends_on:
       - kafka
 
@@ -37,8 +37,8 @@ services:
     build:
       context: ./consumer
       dockerfile: Dockerfile
-    volumes:
-      - ./consumer:/var/www/consumer
+    # volumes:
+    #   - ./consumer:/var/www/consumer
     depends_on:
       - kafka
 

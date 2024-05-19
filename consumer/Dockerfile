@@ -24,7 +24,7 @@ RUN pecl install rdkafka \
     && docker-php-ext-enable rdkafka
 
 # Install composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Set the working directory
 WORKDIR /var/www/consumer
