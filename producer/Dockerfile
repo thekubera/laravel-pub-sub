@@ -33,7 +33,7 @@ WORKDIR /var/www/producer
 COPY composer.json composer.lock ./
 
 # Install composer dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Copy the rest of the application
 COPY . .
